@@ -119,7 +119,7 @@ to_list/1            uniq/1               uniq_by/2
 unzip/1              with_index/2         zip/2
 ```
 
-Wow, now we can know all the functions inside this library.
+Now we can know all the functions inside this library.
 Let's check out what `intersperse` does, that sounds cool.
 
 ```
