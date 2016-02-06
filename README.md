@@ -215,5 +215,55 @@ Now, lets go back to IEx.
 
 ```
 $ iex
-iex(1)>
+
+
+iex(1)> ls
+.git           .gitignore     LICENSE        README.md      src
+iex(2)> cd "src"
+/Users/bobdawg/all_about_iex/src
+iex(3)> c "say_math.ex"
+[SayMath]
+iex(4)> SayMath.add 1, 2
+1 + 2 is 3
+:ok
+iex(5)> h SayMath
+                    SayMath
+
+A simple module to print math operations and their result
+
+iex(6)> h SayMath.add
+
+                  def add(a, b)
+
+prints the addition of two numbers and their result
 ```
+
+And now we have docs!
+However, note that we had to compile our file.
+This is because it is an `.ex` file rather than an executable script, or `.exs`.
+If we change it up a bit, we can access it the same way with a different approach:
+
+```
+$ cp src/say_math.ex src/say_math.exs
+```
+
+And now, we simply add one line to the bottom of our new file:
+
+```
+$ vi say_math.exs
+
+...
+require IEx; IEx.pry
+```
+
+and we can run it now and have the same toys with:
+
+```
+$ iex -S mix run src/say_math.exs
+```
+
+So now we have successfully scripted a bit, compiled files, moved around a directory, generated and written documentation, and also got an introduction to typeguards and some other neat elixir features.
+
+We can also configure and customize our environment when it comes to IEx.
+
+### Coming sooon.....
