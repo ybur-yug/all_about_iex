@@ -1,6 +1,5 @@
 # All About IEx
 
-## Introduction
 I'm an Elixir enthusiast and use the language daily.
 However, I knew I wasn't quite using IEx to its true potential, so I wanted to dive in a bit futher and log my findings.
 We will assume you have Elixir 1.2 installed and are fluent in the basics of the language, but no more than that.
@@ -124,6 +123,7 @@ Wow, now we can know all the functions inside this library.
 Let's check out what `intersperse` does, that sounds cool.
 
 ```
+iex(5)> h Enum.intersperse
             def intersperse(enumerable, element)
 
 Intersperses element between each element of the enumeration.
@@ -141,3 +141,79 @@ Examples
 ```
 
 So, with anything we have access to, we can just pull up docs...thats pretty amazing to a lot of people who arent from the world of Java and other languages in which this is the norm.
+
+Let's actually make a little module and do some stuff so we can use our newfound toys.
+
+```
+iex(6)> defmodule SayMath do
+iex(6)> defmodule SayMath do
+...(6)>   def add(a, b) do
+...(6)>     IO.puts "#{a} + #{b} is #{a + b}"
+...(6)>   end
+...(6)> end
+{:module, SayMath,
+ <<70, 79, 82, 49, 0, 0, 6, 164, 66, 69, 65, 77, 69, 120, 68, 99, 0, 0, 0, 157, 131, 104, 2, 100, 0, 14, 101, 108, 105, 120, 105, 114, 95, 100, 111, 99, 115, 95, 118, 49, 108, 0, 0, 0, 4, 104, 2, ...>>,
+  {:add, 2}}
+iex(7)>SayMath.add 1, 2
+1 + 2 is 3
+:ok
+iex(8)> h SayMath.add
+SayMath was not compiled with docs
+```
+
+Oh, shit, we don't magically just get these docs for free.
+It turns out we have to make them outselves.
+Let's open a file called `say_math.ex`
+
+```elixir
+defmodule SayMath do
+   @moduledoc """
+A simple module to print math operations and their result
+   """
+
+   @doc "Prints the sentence stating what two numbers being added are and their result"
+   def add a, b do
+     IO.puts "#{a} + #{b} is #{a + b}"
+   end
+ end
+```
+
+As you can see we are using the module attributes `@doc` and `@moduledoc` here.
+What `@doc` does is document individual functions, while `@moduledoc` is for an entire module.
+It is worth noting how `@moduledoc` uses a full block inside triple quotes, while function docs tyically are a single line.
+
+While we are at it, let's revise our function to have some type guards.
+
+```elixir
+..
+   @doc "prints the addition of two numbers and their result"
+   @spec add(number(), number()) :: atom()
+   def add a, b do
+     IO.puts "#{a} + #{b} is #{a + b}"
+   end
+..
+```
+
+Now, when we utilize `@spec`, we have a simple pattern.
+First, we say what the spec is for, in this case, the function `add`:
+
+`@spec add( )`
+
+Next, inside the name of the function we give a type for what each argument will be, in this case two numbers.
+
+`@spec add(number(), number())`
+
+And finally we declare what we return:
+
+`@spec add(number(), number()) :: atom()`
+
+The `::` denotes the separation to now stating what you return.
+If you come from a language like Ruby or Python this might seem a bit foreign, but it is quite convenient and combined with pattern matching can do some very powerful things.
+Check out the docs on typeguards for more on the matter.
+
+Now, lets go back to IEx.
+
+```
+$ iex
+iex(1)>
+```
