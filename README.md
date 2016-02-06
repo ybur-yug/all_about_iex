@@ -29,7 +29,7 @@ Well shoot, that sounds conventient.
 Here are some greatest hits of shortcuts we might help ourselves a bit with going on:
 
 
-```elixir
+```
 c     - Compile a given file, or list of files
 clear - clear the screen
 h     - pass in any module or function, get docs
@@ -42,7 +42,7 @@ Let's start off by realizing one REALLY awesome thing about Elixir that I see a 
 If you have a module you are using, there is a 90% chance you can read the docs in your shell.
 Let's check out the `IO` module.
 
-```elixir
+```
 iex(2) h IO
 IO
 
@@ -78,7 +78,7 @@ accessed. Position of files can be changed using the :file.position/2 function.
 Wow, that gives us quite a bit for such a simple setup.
 What about individual functions?
 
-```elixir
+```
 iex(3) h IO.puts
                 def puts(device \\ group_leader(), item)
 
@@ -90,7 +90,8 @@ Boom, with this, we can effectively not ever really need to leave our shell if t
 
 We even have autocomplete if were not totally sure what we want to use.
 If we type this, and then hit tab, you will see the output
-```elixir
+
+```
 iex(4)> Enum.
 
 EmptyError           OutOfBoundsError     all?/2
