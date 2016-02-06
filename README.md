@@ -37,7 +37,7 @@ r     - recompile
 v     - run a command from the line number passed after
 ```
 
-These 5 can take us a long ways.
+These 6 can take us a long ways.
 Let's start off by realizing one REALLY awesome thing about Elixir that I see a surprising amount of people not realize:
 If you have a module you are using, there is a 90% chance you can read the docs in your shell.
 Let's check out the `IO` module.
