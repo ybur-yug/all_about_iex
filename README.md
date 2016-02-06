@@ -236,6 +236,10 @@ iex(6)> h SayMath.add
                   def add(a, b)
 
 prints the addition of two numbers and their result
+
+iex(7) SayMath.add("a", 2)
+iex(7)> SayMath.add "a", 2
+** (ArithmeticError) bad argument in arithmetic expression
 ```
 
 And now we have docs!
@@ -260,10 +264,13 @@ and we can run it now and have the same toys with:
 
 ```
 $ iex -S mix run src/say_math.exs
+# and we can use it as we please
 ```
+
+Note however, that since `.exs` files are not compiled in the same way, you can not get the docs even though we wrote them in, since that happens at compile-time.
 
 So now we have successfully scripted a bit, compiled files, moved around a directory, generated and written documentation, and also got an introduction to typeguards and some other neat elixir features.
 
 We can also configure and customize our environment when it comes to IEx.
 
-### Coming sooon.....
+### Coming soon...
