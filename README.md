@@ -34,6 +34,7 @@ clear - clear the screen
 h     - pass in any module or function, get docs
 ls/cd - work as expected
 r     - recompile
+v     - run a command from the line number passed after
 ```
 
 These 5 can take us a long ways.
@@ -86,6 +87,13 @@ the end. The argument is expected to be a chardata.
 ```
 
 Boom, with this, we can effectively not ever really need to leave our shell if things are written well under the hood with whatever dependencies we use.
+
+It is also worth noting we can re-capture the output from any command using `v`.
+
+```
+iex(3) v(2)
+# gives output from `h IO`, or iex(2)>
+```
 
 We even have autocomplete if were not totally sure what we want to use.
 If we type this, and then hit tab, you will see the output
