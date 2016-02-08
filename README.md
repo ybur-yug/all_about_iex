@@ -279,6 +279,22 @@ Note however, that since `.exs` files are not compiled in the same way, you can 
 
 So now we have successfully scripted a bit, compiled files, moved around a directory, generated and written documentation, and also got an introduction to typeguards and some other neat elixir features.
 
-We can also configure and customize our environment when it comes to IEx.
+There are some other common useful things.
 
-### Coming soon...
+If we define something multi-lined, such as this:
+
+```
+iex(1)>a = fn(r) -> r * 2 end
+...(2)>IO.puts "foo"
+...(3)>test_thing = my_things |> Enum.map(fn(thing) -> do_a_quick_transformation end)
+[some_transformed_list]
+iex(4) # do some things for a while
+iex(50)>v(3)
+#=> some_transformed_list
+```
+
+And this works with things that spand multiple lines such as function definitions or complex transformations!
+That is why we see the `...`
+
+We can also configure and customize our environment when it comes to IEx.
+The [documentation](http://elixir-lang.org/docs/stable/iex/IEx.html#configure/1) on IEx gives the specifics of this great coverage.
